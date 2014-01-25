@@ -33,6 +33,7 @@ while True:
 
     time.sleep(delay)
 
-    counter += 1
-    if counter > 8:
+    if counter >= 8:
         counter = 0
+    else:
+        counter += 1
