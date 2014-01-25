@@ -27,13 +27,13 @@ while True:
     if counter % 4 == 0:
         gpio.output(13, 1)
 
-    if counter % 8 == 0:
+    if counter == 0:
         toggle[15] = not toggle[15]
         gpio.output(15, 1)
 
     time.sleep(delay)
 
-    if counter >= 8:
+    if counter >=  7:
         counter = 0
     else:
         counter += 1
