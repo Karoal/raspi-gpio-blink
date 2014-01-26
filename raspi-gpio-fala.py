@@ -11,9 +11,10 @@ gpio.setup(13, gpio.OUT)
 gpio.setup(15, gpio.OUT)
 
 counter = 0             # LEDs turn on/off based on whether counter is a multiple of a certain num
-delay = 60/(4*128)      # argument for time.sleep, delay between each while loop
+delay = 1               # argument for time.sleep, delay between each while loop
 
 hour, minute = 6, 45    # time at which LEDs toggle fastest
+
 
 def calc_time(hour, minute):
     """ Returns the appropriate delay for time.sleep """
@@ -21,8 +22,11 @@ def calc_time(hour, minute):
     if now.hour < hour or now.hour == hour and now.minute < minute:
         waketime = datetime.datetime(now.year, now.month, now.day, hour, minute)
         delta = waketime - now
-        return (delta.seconds / 10800)
-    else: return 1/3*128
+        return (delta.seconds / 86400)
+    else:
+        waketime = datetime.datetime(now.year, now.month, now.day, hour, minute) + datetime.timedelta(days=1)
+        delta = waketime - now
+        return (delta.seconds / 86400)
 
 while True:
     gpio.output(11, 1 if counter == 0 else 0)
