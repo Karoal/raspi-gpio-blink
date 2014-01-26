@@ -37,6 +37,6 @@ while True:
     if counter >= 3:
         counter = 0
         delay = calc_time(hour, minute)
-        print(delay)
+        print("sec: {0:25} per min: {1}".format(1 / delay, 60 / delay))
     else:
         counter += 1
