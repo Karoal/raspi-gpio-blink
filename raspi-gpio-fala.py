@@ -17,7 +17,7 @@ hour, minute = 6, 45    # time at which LEDs toggle fastest
 
 def calc_time(t):
     """ Returns the appropriate delay for time.sleep """
-    now = datetime.today()
+    now = datetime.today(hour, minute)
     if now.hour < hour or now.hour == hour and now.minute < minute:
         waketime = datetime.datetime(now.year, now.month, now.day, hour, minute)
         delta = waketime - now
@@ -32,7 +32,7 @@ while True:
 
     if counter >= 3:
         counter = 0
-        delay = calc_time(waketime)
+        delay = calc_time(hour, minute)
         print(delay)
     else:
         counter += 1
