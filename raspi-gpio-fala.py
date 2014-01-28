@@ -22,11 +22,11 @@ def calc_time(hour, minute):
     if now.hour < hour or now.hour == hour and now.minute < minute:
         waketime = datetime.datetime(now.year, now.month, now.day, hour, minute)
         delta = waketime - now
-        return (delta.seconds / 86400 if delta.seconds < 600 else 0.00694)
+        return (delta.seconds / 86400 if delta.seconds > 600 else 0.00694)
     else:
         waketime = datetime.datetime(now.year, now.month, now.day, hour, minute) + datetime.timedelta(days=1)
         delta = waketime - now
-        return (delta.seconds / 86400 if delta.seconds < 600 else 0.00694)
+        return (delta.seconds / 86400 if delta.seconds > 600 else 0.00694)
 
 while True:
     gpio.output(11, 1 if counter == 0 else 0)
