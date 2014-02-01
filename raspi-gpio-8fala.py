@@ -30,7 +30,7 @@ delay = calc_time(hour, minute)
 
 while True:
     for x in range(8):
-        gpio.output(pins(x), 1 if counter == x else 0)
+        gpio.output(pins[x], 1 if counter == x else 0)
 
     time.sleep(delay)
 
