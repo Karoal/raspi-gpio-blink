@@ -35,8 +35,9 @@ while True:
     time.sleep(delay)
 
     if counter >= 7:
-        counter = 0
+        i = -1
         delay = calc_time(hour, minute)
         print("sec: {0:20} per min: {1}".format(delay, 60 / delay))
-    else:
-        counter += 1
+    if counter <= 0: i = 1
+
+    counter += i
