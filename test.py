@@ -1,6 +1,7 @@
 # Test to see if 8 LEDs work
 
 import RPi.GPIO as gpio
+import time
 
 pins = (7, 11, 12, 13, 15, 16, 18, 22)
 
