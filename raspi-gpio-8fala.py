@@ -30,15 +30,19 @@ delay = calc_time(hour, minute)
 
 while True:
     if counter <= 7:
+        print("wee")
         for x in range(8):
             gpio.output(pins[x], 1 if counter == x else 0)
     if counter <= 15 and counter > 7:
+        print("moo")
         for x in range(8):
             gpio.output(pins[x], 1 if (counter - 8) >= x else 0)
     if counter <= 23 and counter > 15:
+        print("moo")
         for x in range(8):
             gpio.output(pins[x], 1 if (counter - 24) != x else 0)
     if counter <= 31 and counter > 23:
+        print("moo")
         for x in range(8):
             gpio.output(pins[x], 1 if (counter - 16) <= x else 0)
 
