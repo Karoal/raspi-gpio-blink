@@ -29,15 +29,21 @@ def calc_time(hour, minute):
 delay = calc_time(hour, minute)
 
 while True:
-    for x in range(8):
-        gpio.output(pins[x], 1 if counter == x else 0)
+    if counter <= 7:
+        for x in range(8):
+            gpio.output(pins[x], 1 if counter == x else 0)
+    if counter <= 15 and x > 7:
+        for x in range(8):
+            gpio.output(pins[x], 1 if (counter - 8) >= x else 0)
+    if counter <= 23 and x > 15:
+        for x in range(8):
+            gpio.output(pins[x], 1 if (counter - 24) != x else 0)
+    if counter <= 31 and x > 23:
+        for x in range(8):
+            gpio.output(pins[x], 1 if (counter - 16) <= x else 0)
 
-    time.sleep(delay)
-
-    if counter >= 7:
-        i = -1
+    if counter >= 31:
+        counter = 0
         delay = calc_time(hour, minute)
-        print("sec: {0:20} per min: {1}".format(delay, 60 / delay))
-    if counter <= 0: i = 1
-
-    counter += i
+    else: counter += 1
+    time.sleep(delay)
