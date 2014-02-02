@@ -40,11 +40,11 @@ while True:
     if counter <= 23 and counter > 15:
         print("moo")
         for x in range(8):
-            gpio.output(pins[x], 1 if (counter - 24) != x else 0)
+            gpio.output(pins[x], 1 if (counter - 16) != x else 0)
     if counter <= 31 and counter > 23:
         print("moo")
         for x in range(8):
-            gpio.output(pins[x], 1 if (counter - 16) <= x else 0)
+            gpio.output(pins[x], 1 if (counter - 32) <= x else 0)
 
     if counter >= 31:
         counter = 0
