@@ -35,6 +35,14 @@ while True:
         time.sleep(delay)
     for counter in range(6):
         for led in range(8):
+            gpio.output(pins[6 - led], 1 if counter % 2 == led % 4 else 0)
+        time.sleep(delay)
+    for counter in range(8):
+        for led in range(8):
+            gpio.output(pins[led], 1 if counter % 2 == led % 4 else 0)
+        time.sleep(delay)
+    for counter in range(6):
+        for led in range(8):
             gpio.output(pins[6 - led], 1 if counter == led else 0)
         time.sleep(delay)
 
