@@ -29,9 +29,9 @@ def calc_time(hour, minute):
 delay = calc_time(hour, minute)
 
 while True:
-    for counter in range(8):
+    for counter in range(3):
         for led in range(8):
-            gpio.output(pins[led], 1 if counter % 4 == led % 4 else 0)
+            gpio.output(pins[led], 1 if counter % 3 == led % 3 else 0)
         time.sleep(delay)
     delay = calc_time(hour, minute)
 
