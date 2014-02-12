@@ -29,25 +29,58 @@ def calc_time(hour, minute):
 delay = calc_time(hour, minute)
 
 while True:
-    if counter <= 7:
-        print("wee")
-        for x in range(8):
-            gpio.output(pins[x], 1 if counter == x else 0)
-    if counter <= 15 and counter > 7:
-        print("moo")
-        for x in range(8):
-            gpio.output(pins[x], 1 if (counter - 8) >= x else 0)
-    if counter <= 23 and counter > 15:
-        print("moo")
-        for x in range(8):
-            gpio.output(pins[x], 1 if (counter - 16) != x else 0)
-    if counter <= 31 and counter > 23:
-        print("moo")
-        for x in range(8):
-            gpio.output(pins[x], 1 if (counter - 24) < x else 0)
+    for counter in range(32):
+        if counter <= 7:
+            for led in range(8):
+                gpio.output(pins[led], 1 if counter == x else 0
+        if counter <= 15 and counter > 7:
+            for led in range(8):
+                gpio.output(pins[led], 1 if  counter % 4 == led % 4 else 0
+        if counter <= 23 and counter > 15:
+            for led in range(8):
+                gpio.output(pins[led], 1 if  counter % 3 == led % 3 else 0
+        if counter <= 31 and counter > 23:
+            for led in range(8):
+                gpio.output(pins[led], 1 if  counter % 2 == led % 2 else 0
+        time.sleep(delay)
 
-    if counter >= 31:
-        counter = 0
-        delay = calc_time(hour, minute)
-    else: counter += 1
-    time.sleep(delay)
+    for counter in range(32):
+        if counter <= 7:
+            for led in range(8):
+                gpio.output(pins[led], 1 if counter != x else 0
+        if counter <= 15 and counter > 7:
+            for led in range(8):
+                gpio.output(pins[led], 1 if  counter % 4 != led % 4 else 0
+        if counter <= 23 and counter > 15:
+            for led in range(8):
+                gpio.output(pins[led], 1 if  counter % 3 != led % 3 else 0
+        if counter <= 31 and counter > 23:
+            for led in range(8):
+                gpio.output(pins[led], 1 if  counter % 2 != led % 2 else 0
+        time.sleep(delay)
+
+    delay = calc_time(hour, minute)
+
+
+#    if counter <= 7:
+#        print("wee")
+#        for x in range(8):
+#            gpio.output(pins[x], 1 if counter == x else 0)
+#    if counter <= 15 and counter > 7:
+#        print("moo")
+#        for x in range(8):
+#            gpio.output(pins[x], 1 if (counter - 8) >= x else 0)
+#    if counter <= 23 and counter > 15:
+#        print("moo")
+#        for x in range(8):
+#            gpio.output(pins[x], 1 if (counter - 16) != x else 0)
+#    if counter <= 31 and counter > 23:
+#        print("moo")
+#        for x in range(8):
+#            gpio.output(pins[x], 1 if (counter - 24) < x else 0)
+#
+#    if counter >= 31:
+#        counter = 0
+#        delay = calc_time(hour, minute)
+#    else: counter += 1
+#    time.sleep(delay)
